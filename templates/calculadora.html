@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Flask</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1>Calculadora Web</h1>
+
+    <div id="calculator">
+
+        <form method="POST" action="{{ url_for('index') }}">
+
+            <div class="form-grupo">
+                <label>Primeiro número</label>
+
+                <input
+                    type="number"
+                    name="num1"
+                    step="any"
+                    required
+                >
+            </div>
+
+            <div class="form-grupo">
+                <label>Operação</label>
+
+                <select
+                    name="operacao"
+                    id="operacao"
+                    onchange="mostrarCampos()"
+                >
+                    <option value="+">Somar</option>
+                    <option value="-">Subtrair</option>
+                    <option value="*">Multiplicar</option>
+                    <option value="/">Dividir</option>
+                    <option value="**">Potência</option>
+                    <option value="sqrt">Raiz Quadrada</option>
+                    <option value="log">Logaritmo</option>
+                    <option value="bhaskara">Bhaskara</option>
+                </select>
+            </div>
+
+            <div class="form-grupo" id="grupo-num2">
+                <label>Segundo número</label>
+
+                <input
+                    type="number"
+                    name="num2"
+                    id="num2"
+                    step="any"
+                >
+            </div>
+
+            <div class="form-grupo" id="grupo-num3" style="display:none;">
+                <label>Terceiro número</label>
+
+                <input
+                    type="number"
+                    name="num3"
+                    id="num3"
+                    step="any"
+                >
+            </div>
+
+            <button type="submit">
+                Calcular
+            </button>
+
+        </form>
+
+        {% if etapas %}
+
+        <div class="resultado">
+            <strong>Conta:</strong>
+            <div>{{ etapas }}</div>
+
+            <strong>Resultado:</strong>
+            <div>{{ resultados }}</div>
+        </div>
+
+        {% endif %}
+
+        <a href="{{ url_for('index') }}">
+            Limpar
+        </a>
+
+    </div>
+
+    <script>
+
+        function mostrarCampos() {
+
+            let op = document.getElementById("operacao").value;
+
+            let grupoNum2 =
+                document.getElementById("grupo-num2");
+
+            let grupoNum3 =
+                document.getElementById("grupo-num3");
+
+            if (op == "sqrt" || op == "log") {
+
+                grupoNum2.style.display = "none";
+                grupoNum3.style.display = "none";
+
+            }
+
+            else if (op == "bhaskara") {
+
+                grupoNum2.style.display = "block";
+                grupoNum3.style.display = "block";
+
+            }
+
+            else {
+
+                grupoNum2.style.display = "block";
+                grupoNum3.style.display = "none";
+
+            }
+        }
+
+        mostrarCampos();
+
+    </script>
+
+</body>
+</html>

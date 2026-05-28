@@ -1,0 +1,64 @@
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+#calculator {
+    width: 320px;
+
+    margin: auto;
+
+    border: 1px solid #ccc;
+
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+    text-align: left;
+}
+
+.form-grupo {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+
+    width: 100%;
+
+    padding: 8px;
+
+    font-size: 16px;
+
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+.resultado {
+
+    margin-top: 15px;
+
+    background: #f0f4f8;
+
+    padding: 10px;
+
+    border-radius: 5px;
+}
+
+a {
+    display: inline-block;
+
+    margin-top: 10px;
+}
